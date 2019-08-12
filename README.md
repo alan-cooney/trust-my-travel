@@ -1,6 +1,11 @@
 # Trust My Travel - Unofficial SDK
 
+[![npm](https://img.shields.io/npm/v/trust-my-travel.svg)](https://www.npmjs.com/package/trust-my-travel)
+[![npm](https://img.shields.io/npm/l/trust-my-travel.svg)](https://www.npmjs.com/package/trust-my-travel)
+
 Unofficial SDK maintained by the team at [Skyhook](https://www.skyhookadventure.com).
+
+This package is in **ALPHA**.
 
 ## Setup
 
