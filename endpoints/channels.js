@@ -1,0 +1,54 @@
+import urlArguments from "../utils/urlArguments";
+
+export async function createChannel(axios, { name, currencies }) {
+  try {
+    const res = await axios.post("channels", {
+      name,
+      currencies
+    });
+    return res.data;
+  } catch (e) {
+    throw new Error(e.message);
+  }
+}
+
+export async function updateChannel(axios, channel_id, { name, currencies }) {
+  try {
+    const res = await axios.put(`channels/${channel_id}`, {
+      name,
+      currencies
+    });
+    return res.data;
+  } catch (e) {
+    throw new Error(e.message);
+  }
+}
+
+export async function listChannels(axios, options) {
+  try {
+    const queryString = urlArguments(options);
+    const res = await axios.get(`channels${queryString}`);
+    return res.data;
+  } catch (e) {
+    throw new Error(e.message);
+  }
+}
+
+export async function getChannel(axios, channel_id) {
+  try {
+    const res = await axios.get(`channels/${channel_id}`);
+    return res.data;
+  } catch (e) {
+    throw new Error(e.message);
+  }
+}
+
+export async function deleteChannel(axios, channel_id) {
+  try {
+    const res = await axios.delete(`channels/${channel_id}`);
+    return res.data.deleted;
+  } catch (e) {
+    console.log(e);
+    throw new Error(e.message);
+  }
+}

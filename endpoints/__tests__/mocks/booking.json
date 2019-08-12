@@ -1,0 +1,13 @@
+{
+  "channels": "",
+  "content": "River cruise for two",
+  "firstname": "John",
+  "surname": "Smith",
+  "email": "john.smith@example.org",
+  "date": "2018-05-12",
+  "pax": 2,
+  "reference": "booking123",
+  "total": 1000,
+  "currencies": "GBP",
+  "countries": "GB"
+}

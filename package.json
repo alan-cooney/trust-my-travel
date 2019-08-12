@@ -1,0 +1,14 @@
+{
+  "name": "trust-my-travel",
+  "version": "1.0.0",
+  "description": "Trust My Travel Unofficial SDK",
+  "main": "index.js",
+  "repository": "https://github.com/alan-cooney/trust-my-travel",
+  "author": "Alan Cooney",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "axios": "^0.19.0",
+    "axios-timed": "^1.0.0"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "payee_name": "Bill Smith",
+  "payee_email": "bill.smith@example.org",
+  "countries": "GB",
+  "channels": "",
+  "bookings": [
+    {
+      "id": "",
+      "currencies": "GBP",
+      "total": 1000
+    }
+  ],
+  "currencies": "GBP",
+  "total": 1000,
+  "psp": "test_psp",
+  "transaction_types": "purchase",
+  "payment_methods": "credit-card",
+  "token": "FINALTOKEN123",
+  "ip_address": "192.12.12.12",
+  "bin_number": "411111"
+}
