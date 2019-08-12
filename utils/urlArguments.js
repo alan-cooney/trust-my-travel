@@ -1,9 +1,9 @@
-import querystring from "querystring";
+const querystring = require("querystring");
 
-export default function queryStringBuilder(options) {
+module.exports = function queryStringBuilder(options) {
   if (options) {
     return "?" + querystring.stringify(options);
   } else {
     return "";
   }
-}
+};

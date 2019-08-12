@@ -1,5 +1,3 @@
-// import urlArguments from "../utils/urlArguments";
-
 /**
  * Create booking
  * 
@@ -18,7 +16,7 @@
     countries // 2-letter ISO that the booking takes place in (required)
   }
  */
-export async function createBooking(axios, body) {
+module.exports.createBooking = async function createBooking(axios, body) {
   try {
     const res = await axios.post("bookings", body);
     return res.data;
@@ -26,18 +24,22 @@ export async function createBooking(axios, body) {
     console.log(e);
     throw new Error(e.message);
   }
-}
+};
 
-export async function updateBooking(axios, booking_id, body) {
+module.exports.updateBooking = async function updateBooking(
+  axios,
+  booking_id,
+  body
+) {
   try {
     const res = await axios.put(`bookings/${booking_id}`, body);
     return res.data;
   } catch (e) {
     throw new Error(e.message);
   }
-}
+};
 
-// export async function listBookings(axios, options) {
+// module.exports. =  async function listBookings(axios, options) {
 //   try {
 //     const queryString = urlArguments(options);
 //     const res = await axios.get(`bookings${queryString}`);
@@ -48,20 +50,20 @@ export async function updateBooking(axios, booking_id, body) {
 //   }
 // }
 
-export async function getBooking(axios, booking_id) {
+module.exports.getBooking = async function getBooking(axios, booking_id) {
   try {
     const res = await axios.get(`bookings/${booking_id}`);
     return res.data;
   } catch (e) {
     throw new Error(e.message);
   }
-}
+};
 
-export async function deleteBooking(axios, booking_id) {
+module.exports.deleteBooking = async function deleteBooking(axios, booking_id) {
   try {
     const res = await axios.delete(`bookings/${booking_id}`);
     return res.data.status;
   } catch (e) {
     throw new Error(e.message);
   }
-}
+};

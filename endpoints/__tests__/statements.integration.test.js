@@ -1,4 +1,4 @@
-import trustMyTravel from "../..";
+const trustMyTravel = require("../..");
 
 // Global variables
 var tmt;

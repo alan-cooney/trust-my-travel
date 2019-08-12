@@ -1,6 +1,9 @@
-import urlArguments from "../utils/urlArguments";
+const urlArguments = require("../utils/urlArguments");
 
-export async function createChannel(axios, { name, currencies }) {
+module.exports.createChannel = async function createChannel(
+  axios,
+  { name, currencies }
+) {
   try {
     const res = await axios.post("channels", {
       name,
@@ -10,9 +13,13 @@ export async function createChannel(axios, { name, currencies }) {
   } catch (e) {
     throw new Error(e.message);
   }
-}
+};
 
-export async function updateChannel(axios, channel_id, { name, currencies }) {
+module.exports.updateChannel = async function updateChannel(
+  axios,
+  channel_id,
+  { name, currencies }
+) {
   try {
     const res = await axios.put(`channels/${channel_id}`, {
       name,
@@ -22,9 +29,9 @@ export async function updateChannel(axios, channel_id, { name, currencies }) {
   } catch (e) {
     throw new Error(e.message);
   }
-}
+};
 
-export async function listChannels(axios, options) {
+module.exports.listChannels = async function listChannels(axios, options) {
   try {
     const queryString = urlArguments(options);
     const res = await axios.get(`channels${queryString}`);
@@ -32,18 +39,18 @@ export async function listChannels(axios, options) {
   } catch (e) {
     throw new Error(e.message);
   }
-}
+};
 
-export async function getChannel(axios, channel_id) {
+module.exports.getChannel = async function getChannel(axios, channel_id) {
   try {
     const res = await axios.get(`channels/${channel_id}`);
     return res.data;
   } catch (e) {
     throw new Error(e.message);
   }
-}
+};
 
-export async function deleteChannel(axios, channel_id) {
+module.exports.deleteChannel = async function deleteChannel(axios, channel_id) {
   try {
     const res = await axios.delete(`channels/${channel_id}`);
     return res.data.deleted;
@@ -51,4 +58,4 @@ export async function deleteChannel(axios, channel_id) {
     console.log(e);
     throw new Error(e.message);
   }
-}
+};

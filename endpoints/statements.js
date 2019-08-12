@@ -1,15 +1,15 @@
-import urlArguments from "../utils/urlArguments";
+const urlArguments = require("../utils/urlArguments");
 
-export async function getStatement(axios, statement_id) {
+module.exports.getStatement = async function getStatement(axios, statement_id) {
   try {
     const res = await axios.get(`statements/${statement_id}`);
     return res.data;
   } catch (e) {
     throw new Error(e.message);
   }
-}
+};
 
-export async function listStatements(axios, options) {
+module.exports.listStatements = async function listStatements(axios, options) {
   try {
     const queryString = urlArguments(options);
     const res = await axios.get(`statements${queryString}`);
@@ -17,4 +17,4 @@ export async function listStatements(axios, options) {
   } catch (e) {
     throw new Error(e.message);
   }
-}
+};

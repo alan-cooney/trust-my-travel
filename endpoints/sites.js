@@ -1,9 +1,9 @@
-import urlArguments from "../utils/urlArguments";
+const urlArguments = require("../utils/urlArguments");
 
 /**
  * List sites
  */
-export async function listSites(axios, options) {
+module.exports.listSites = async function listSites(axios, options) {
   try {
     const queryString = urlArguments(options);
     const res = await axios.get(`sites${queryString}`);
@@ -11,7 +11,7 @@ export async function listSites(axios, options) {
   } catch (e) {
     throw new Error("Failed to list sites. " + e.message);
   }
-}
+};
 
 /**
  * Update permitted urls
@@ -20,7 +20,11 @@ export async function listSites(axios, options) {
  * @param {string} siteId
  * @param {array} permitted_urls
  */
-export async function updatePermittedUrls(axios, siteId, permitted_urls) {
+module.exports.updatePermittedUrls = async function updatePermittedUrls(
+  axios,
+  siteId,
+  permitted_urls
+) {
   try {
     const res = await axios.put(`sites/${siteId}`, {
       permitted_urls
@@ -29,4 +33,4 @@ export async function updatePermittedUrls(axios, siteId, permitted_urls) {
   } catch (e) {
     throw new Error("Failed to update permitted urls. " + e.message);
   }
-}
+};

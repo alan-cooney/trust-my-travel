@@ -1,4 +1,4 @@
-import axios from "axios";
+const axios = require("axios");
 
 /**
  * Get token
@@ -8,7 +8,7 @@ import axios from "axios";
  *
  * @returns {Object} {token, refresh_token...}
  */
-export async function getToken(url, username, password) {
+module.exports.getToken = async function getToken(url, username, password) {
   try {
     const res = await axios.post(`${url}/wp-json/jwt-auth/v1/token`, {
       username,
@@ -20,7 +20,7 @@ export async function getToken(url, username, password) {
       "Trust My Travel authentication failed with message: " + e.message
     );
   }
-}
+};
 
 /**
  * Refresh token
@@ -29,7 +29,7 @@ export async function getToken(url, username, password) {
  *
  * @returns {Object} {token, refresh_token...}
  */
-export async function refreshToken(url, refreshTkn) {
+module.exports.refreshToken = async function refreshToken(url, refreshTkn) {
   try {
     const res = await axios.post(
       `${url}/wp-json/jwt-auth/v1/token/refresh`,
@@ -42,7 +42,7 @@ export async function refreshToken(url, refreshTkn) {
       "Trust My Travel refresh token failed with message: " + e.message
     );
   }
-}
+};
 
 /**
  * Delete token
@@ -51,7 +51,7 @@ export async function refreshToken(url, refreshTkn) {
  *
  * @returns {string} "jwt_auth_refresh_token_removed"
  */
-export async function deleteToken(url, refreshTkn) {
+module.exports.deleteToken = async function deleteToken(url, refreshTkn) {
   try {
     const res = await axios.delete(`${url}/wp-json/jwt-auth/v1/token/refresh`, {
       headers: { Authorization: `Bearer ${refreshTkn}` }
@@ -62,4 +62,4 @@ export async function deleteToken(url, refreshTkn) {
       "Trust My Travel delete token failed with message: " + e.message
     );
   }
-}
+};

@@ -1,6 +1,6 @@
-import trustMyTravel from "../..";
-import bookingMock from "./mocks/booking";
-import transactionMock from "./mocks/transaction";
+const trustMyTravel = require("../..");
+const bookingMock = require("./mocks/booking");
+const transactionMock = require("./mocks/transaction");
 
 // Global variables
 var tmt;
@@ -33,7 +33,7 @@ test("Create transaction", async () => {
 });
 
 // Test several transactions#
-test("Multiple transactions simultaneously", async end => {
+/* test("Multiple transactions simultaneously", async end => {
   jest.setTimeout(30000);
   let testBook = [];
   let testTrans = [];
@@ -58,11 +58,10 @@ test("Multiple transactions simultaneously", async end => {
   });
 
   const res = await Promise.all(promises);
-  console.log(res);
   expect(res.length).toBe(number);
 
   await end();
-});
+}); */
 
 test("Get transaction", async () => {
   const res = await tmt.getTransaction(testTransaction.id);

@@ -1,4 +1,4 @@
-import urlArguments from "../urlArguments";
+const urlArguments = require("../urlArguments");
 
 test("Return options", () => {
   // Arguments to test, including $%^ which should be encoded

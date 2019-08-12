@@ -1,4 +1,4 @@
-import urlArguments from "../utils/urlArguments";
+const urlArguments = require("../utils/urlArguments");
 
 /**
  * Create transaction
@@ -10,7 +10,19 @@ import urlArguments from "../utils/urlArguments";
         [{id, // (required)
           currencies, // (required)
           total, // Total in cents  {integer} (required)
-          reference // Reference for the booking {string} (required)
+          reference, // Reference for the booking {string} (required)
+          allocation: [
+            {
+              channels, // Integer of channel ID
+              currencies,
+              amount,
+              operator, // "percent" or "flat",
+              action, // Whether to allocate or retain the allocation - TODO, work out what this does
+              deduction_from_total, // The amount to deduct from the transaction total
+              debit, // The amount debited from the master channel
+              credit // The amount credited from the master channel
+            }
+          ]
         }],
     currencies, // 3-letter ISO (required)
     total, // Total in cents, integer (required)
@@ -31,25 +43,34 @@ import urlArguments from "../utils/urlArguments";
     forex_rate, // Forex rate for XCCY
   }
  */
-export async function createTransaction(axios, body) {
+module.exports.createTransaction = async function createTransaction(
+  axios,
+  body
+) {
   try {
     const res = await axios.post("transactions", body);
     return { ...res.data, __responseTime: res.config.ms };
   } catch (e) {
     throw new Error(e.message);
   }
-}
+};
 
-export async function getTransaction(axios, transaction_id) {
+module.exports.getTransaction = async function getTransaction(
+  axios,
+  transaction_id
+) {
   try {
     const res = await axios.get(`transactions/${transaction_id}`);
     return res.data;
   } catch (e) {
     throw new Error(e.message);
   }
-}
+};
 
-export async function listTransactions(axios, options) {
+module.exports.listTransactions = async function listTransactions(
+  axios,
+  options
+) {
   try {
     const queryString = urlArguments(options);
     const res = await axios.get(`transactions${queryString}`);
@@ -57,4 +78,4 @@ export async function listTransactions(axios, options) {
   } catch (e) {
     throw new Error(e.message);
   }
-}
+};

@@ -7,7 +7,14 @@
     {
       "id": "",
       "currencies": "GBP",
-      "total": 1000
+      "total": 1000,
+      "allocations": {
+        "channels": 65,
+        "currencies": "GBP",
+        "amount": "abc",
+        "operator": "flat",
+        "deduction_from_total": "abc"
+      }
     }
   ],
   "currencies": "GBP",

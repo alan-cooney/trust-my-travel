@@ -1,6 +1,6 @@
-import trustMyTravel from "../..";
-import bookingMock from "./mocks/booking";
-import transactionMock from "./mocks/transaction";
+const trustMyTravel = require("../..");
+const bookingMock = require("./mocks/booking");
+const transactionMock = require("./mocks/transaction");
 
 // Global variables
 var tmt;

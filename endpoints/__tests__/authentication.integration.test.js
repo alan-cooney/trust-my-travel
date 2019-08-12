@@ -1,4 +1,4 @@
-import { getToken, refreshToken, deleteToken } from "../authentication";
+const { getToken, refreshToken, deleteToken } = require("../authentication");
 
 const config = {
   url: process.env.TMT_URL,

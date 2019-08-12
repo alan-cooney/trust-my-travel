@@ -1,28 +1,28 @@
-import { getToken } from "./endpoints/authentication";
-import { listSites, updatePermittedUrls } from "./endpoints/sites";
-import axiosModule from "axios";
-import axiosTimed from "axios-timed";
-import {
+const { getToken } = require("./endpoints/authentication");
+const { listSites, updatePermittedUrls } = require("./endpoints/sites");
+const axiosModule = require("axios");
+const axiosTimed = require("axios-timed");
+const {
   createChannel,
   getChannel,
   updateChannel,
   listChannels,
   deleteChannel
-} from "./endpoints/channels";
-import {
+} = require("./endpoints/channels");
+const {
   createBooking,
   updateBooking,
   getBooking,
   // listBookings,
   deleteBooking
-} from "./endpoints/bookings";
-import {
+} = require("./endpoints/bookings");
+const {
   createTransaction,
   getTransaction,
   listTransactions
-} from "./endpoints/transactions";
-import { getPayment, listPayments } from "./endpoints/payments";
-import { listStatements, getStatement } from "./endpoints/statements";
+} = require("./endpoints/transactions");
+const { getPayment, listPayments } = require("./endpoints/payments");
+const { listStatements, getStatement } = require("./endpoints/statements");
 
 /**
  * trustMyTravel
@@ -30,7 +30,7 @@ import { listStatements, getStatement } from "./endpoints/statements";
  * Then use the public methods returned below
  * @param {Object} config {url, username, password}
  */
-export default async function trustMyTravel({
+module.exports = async function trustMyTravel({
   url = process.env.TMT_URL,
   username = process.env.TMT_USERNAME,
   password = process.env.TMT_PASSWORD
@@ -83,4 +83,4 @@ export default async function trustMyTravel({
     getStatement: async statement_id => getStatement(axios, statement_id),
     listStatements: async options => listStatements(axios, options)
   };
-}
+};
