@@ -54,7 +54,7 @@ module.exports.getBooking = async function getBooking(axios, booking_id) {
     const res = await axios.get(`bookings/${booking_id}`);
     return res.data;
   } catch (e) {
-    throw new Error(e.message);
+    throw e.response.data;
   }
 };
 
@@ -63,7 +63,7 @@ module.exports.deleteBooking = async function deleteBooking(axios, booking_id) {
     const res = await axios.delete(`bookings/${booking_id}`);
     return res.data.status;
   } catch (e) {
-    throw new Error(e.message);
+    throw e.response.data;
   }
 };
 
