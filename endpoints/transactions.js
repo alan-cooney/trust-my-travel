@@ -40,7 +40,7 @@ const urlArguments = require("../utils/urlArguments");
     payee_surname, // Surname returned by PSP
     payee_email, // Email of payee
     card_types, // Card type returned by PSP
-    forex_rate, // Forex rate for XCCY
+    forex_rate, // Auto generated anyway?
   }
  */
 module.exports.createTransaction = async function createTransaction(
@@ -51,7 +51,7 @@ module.exports.createTransaction = async function createTransaction(
     const res = await axios.post("transactions", body);
     return { ...res.data, __responseTime: res.config.ms };
   } catch (e) {
-    throw new Error(e.message);
+    throw e.response.data;
   }
 };
 
@@ -63,7 +63,7 @@ module.exports.getTransaction = async function getTransaction(
     const res = await axios.get(`transactions/${transaction_id}`);
     return res.data;
   } catch (e) {
-    throw new Error(e.message);
+    throw e.response.data;
   }
 };
 
@@ -76,6 +76,6 @@ module.exports.listTransactions = async function listTransactions(
     const res = await axios.get(`transactions${queryString}`);
     return res.data;
   } catch (e) {
-    throw new Error(e.message);
+    throw e.response.data;
   }
 };

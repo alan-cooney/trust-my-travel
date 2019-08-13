@@ -11,7 +11,7 @@ module.exports.createChannel = async function createChannel(
     });
     return res.data;
   } catch (e) {
-    throw new Error(e.message);
+    throw e.response.data;
   }
 };
 
@@ -27,7 +27,7 @@ module.exports.updateChannel = async function updateChannel(
     });
     return res.data;
   } catch (e) {
-    throw new Error(e.message);
+    throw e.response.data;
   }
 };
 
@@ -37,7 +37,7 @@ module.exports.listChannels = async function listChannels(axios, options) {
     const res = await axios.get(`channels${queryString}`);
     return res.data;
   } catch (e) {
-    throw new Error(e.message);
+    throw e.response.data;
   }
 };
 
@@ -46,7 +46,7 @@ module.exports.getChannel = async function getChannel(axios, channel_id) {
     const res = await axios.get(`channels/${channel_id}`);
     return res.data;
   } catch (e) {
-    throw new Error(e.message);
+    throw e.response.data;
   }
 };
 
@@ -55,7 +55,6 @@ module.exports.deleteChannel = async function deleteChannel(axios, channel_id) {
     const res = await axios.delete(`channels/${channel_id}`);
     return res.data.deleted;
   } catch (e) {
-    console.log(e);
-    throw new Error(e.message);
+    throw e.response.data;
   }
 };

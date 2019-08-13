@@ -21,8 +21,7 @@ module.exports.createBooking = async function createBooking(axios, body) {
     const res = await axios.post("bookings", body);
     return res.data;
   } catch (e) {
-    console.log(e);
-    throw new Error(e.message);
+    throw e.response.data;
   }
 };
 
@@ -35,11 +34,11 @@ module.exports.updateBooking = async function updateBooking(
     const res = await axios.put(`bookings/${booking_id}`, body);
     return res.data;
   } catch (e) {
-    throw new Error(e.message);
+    throw e.response.data;
   }
 };
 
-// module.exports. =  async function listBookings(axios, options) {
+// module.exports.listBookings =  async function listBookings(axios, options) {
 //   try {
 //     const queryString = urlArguments(options);
 //     const res = await axios.get(`bookings${queryString}`);
@@ -67,3 +66,58 @@ module.exports.deleteBooking = async function deleteBooking(axios, booking_id) {
     throw new Error(e.message);
   }
 };
+
+// module.exports.processBooking = async function processBooking(
+//   axios,
+//   {
+//     channels,
+//     content = "",
+//     firstname,
+//     surname,
+//     email,
+//     date, // Booking start date
+//     pax,
+//     reference,
+//     booking_total,
+//     currencies,
+//     countries,
+//     content,
+//     allocation = [],
+//     transaction_total,
+//     psp,
+//     payment_methods = "credit-card",
+//     transaction_types = "purchase",
+//     transaction_content = "",
+//     countrines, // From spreedly
+//     token,
+//     attempt_3ds = true, // TODO only for EU cards
+//     redirect_url_3ds, // Re-ordered from API as name was JS invalid
+//     bin_number,
+//     payee_name = firstname,
+//     payee_surname = surname,
+//     payee_email = email,
+//     card_types
+//   }
+// ) {
+//   // Creat booking
+//   const bookingObject = {
+//     channels,
+//     content,
+//     firstname,
+//     surname,
+//     email,
+//     date,
+//     pax,
+//     reference,
+//     total: booking_total,
+//     currencies,
+//     countries
+//   };
+//   const booking = await this.createBooking(axios, bookingObject);
+
+//   // Create transaction
+//   const transactionObject = {
+//     card_types,
+//     forex
+//   };
+// };

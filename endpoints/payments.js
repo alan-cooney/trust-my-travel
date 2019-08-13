@@ -5,7 +5,7 @@ module.exports.getPayment = async function getPayment(axios, payment_id) {
     const res = await axios.get(`payments/${payment_id}`);
     return res.data;
   } catch (e) {
-    throw new Error(e.message);
+    throw e.response.data;
   }
 };
 
@@ -20,6 +20,6 @@ module.exports.listPayments = async function listPayments(axios, options) {
     const res = await axios.get(`payments${queryString}`);
     return res.data;
   } catch (e) {
-    throw new Error(e.message);
+    throw e.response.data;
   }
 };

@@ -5,7 +5,7 @@ module.exports.getStatement = async function getStatement(axios, statement_id) {
     const res = await axios.get(`statements/${statement_id}`);
     return res.data;
   } catch (e) {
-    throw new Error(e.message);
+    throw e.response.data;
   }
 };
 
@@ -15,6 +15,6 @@ module.exports.listStatements = async function listStatements(axios, options) {
     const res = await axios.get(`statements${queryString}`);
     return res.data;
   } catch (e) {
-    throw new Error(e.message);
+    throw e.response.data;
   }
 };
