@@ -33,19 +33,53 @@ All functions are promisified, for ES8 async/await use.
 
 ### Examples
 
-Note: All examples assume code is within an async function.
-
 #### Sites
 
 ##### Create permitted urls
 
 ```javascript
+const siteId = 123;
 const permitted_urls = ["https://www.example.com", "https://www.example2.com"];
-const res = await tmt.updatePermittedUrls(siteId, permitted_urls);
+await tmt.updatePermittedUrls(siteId, permitted_urls);
 ```
 
 ##### List sites
 
 ```javascript
-const sites = await tmt.listSites();
+const sites = await tmt.listSites(); // Returns array of sites
+```
+
+#### Channels
+
+##### Create channel
+
+```javascript
+const res = await tmt.createChannel({
+  name: "Channel name",
+  currencies: "GBP"
+}); // Returns a channel object {id: 123...}
+```
+
+##### Update channel
+
+```javascript
+await tmt.updateChannel(123, { name: "New channel name", currencies: "USD" });
+```
+
+##### List channels
+
+```javascript
+const channels = await listChannels();
+```
+
+##### Get channel
+
+```javascript
+const channel = await getChannel(123);
+```
+
+##### Delete channel
+
+```javascript
+await deleteChannel(123);
 ```

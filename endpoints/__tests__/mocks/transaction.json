@@ -7,18 +7,20 @@
     {
       "id": "",
       "currencies": "GBP",
-      "total": 1000,
-      "allocations": {
-        "channels": 65,
-        "currencies": "GBP",
-        "amount": "abc",
-        "operator": "flat",
-        "deduction_from_total": "abc"
-      }
+      "total": 10000,
+      "allocation": [
+        {
+          "channels": 65,
+          "currencies": "GBP",
+          "amount": 8000,
+          "operator": "flat",
+          "action": "allocate"
+        }
+      ]
     }
   ],
   "currencies": "GBP",
-  "total": 1000,
+  "total": 10000,
   "psp": "test_psp",
   "transaction_types": "purchase",
   "payment_methods": "credit-card",
